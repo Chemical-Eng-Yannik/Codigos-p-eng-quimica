@@ -1,0 +1,14 @@
+cp = 4.18
+t1 = float(input("Temperatura de entrada da água em °C: "))
+t2 = float(input("Temperatura de saída da água em °C: "))
+Q = float(input("Quantidade de calor em Gj/h: "))
+Qc = Q*1e6 # tranformação de Gj para Kj
+dt = t2 - t1
+Tm = (t1+t2)/2
+Lt = 2500.8 -2.36*Tm +0.0016*Tm**2 -0.00006*Tm**3
+m = Qc/(cp*dt)
+mev = Qc/Lt
+paev = mev/m*100
+print(f'\na massa de água para a troca térmica é {m: .2f}','kg/h')
+print(f'\na massa de água evaporada é de {mev: .2f}','kg/h')
+print(f'\na % de água evaporada é {paev:.2f}','%')
