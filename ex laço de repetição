@@ -1,0 +1,6 @@
+r = []
+range(-10,11)
+for x in range(-10,11):
+    fx = x**2 + 4
+    r.append(fx)
+print(sorted(r, reverse = True))
