@@ -1,0 +1,16 @@
+import matplotlib.pyplot as gr
+import math as m 
+y = []
+h = int(input('tempo em horas: '))
+tx = list(range(h+1))
+for t in tx:
+    x = m.exp(0.0453*t + 1.1855)
+    y.append(x)
+gr.plot(tx, y, 'm-d')
+gr.xlabel('tempo (h)')
+gr.ylabel('Concentração de levedura seca (g/L)')
+gr.grid(color='k', linestyle='-', linewidth=0.1)
+gr.show()
+
+print([format(x, ".2f") for x in y])
+print(tx)
