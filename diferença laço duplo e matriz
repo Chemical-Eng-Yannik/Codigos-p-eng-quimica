@@ -1,0 +1,59 @@
+"""
+Comparação: Loop Duplo x Meshgrid
+=================================
+
+Exemplo simples de cálculo da função f(x,y) = x^2 + y^2
+usando duas abordagens diferentes:
+
+1) Loop duplo (manual)
+   - Percorre todos os valores de x e y
+   - Calcula f(x,y) elemento por elemento
+   - Mais verboso e geralmente mais lento
+
+2) Meshgrid + NumPy (vetorizado)
+   - Cria grades 2D com todos os valores de x e y
+   - Aplica a função de uma vez sobre toda a grade
+   - Código mais limpo, rápido e aproveita operações em bloco
+"""
+
+import numpy as np
+
+# Intervalo dos valores
+x = np.linspace(-2, 2, 5)  # 5 pontos igualmente espaçados de -2 a 2
+y = np.linspace(-2, 2, 5)
+
+# ===============================================================
+# MÉTODO 1: LOOP DUPLO
+# ===============================================================
+resultados = []
+for xi in x:
+    for yi in y:
+        f = xi**2 + yi**2
+        resultados.append((xi, yi, f))
+
+print("Loop duplo - primeiros 5 resultados:")
+print(resultados[:5])  # mostra só os primeiros pares (x, y, f)
+
+# ===============================================================
+# MÉTODO 2: MESHGRID (FORMA VETORIZADA)
+# ===============================================================
+X, Y = np.meshgrid(x, y)  # cria a grade de pontos
+F = X**2 + Y**2           # aplica a função em todos os pontos
+
+print("\nMeshgrid - matriz X:")
+print(X)
+print("\nMeshgrid - matriz Y:")
+print(Y)
+print("\nMeshgrid - matriz F = X^2 + Y^2:")
+print(F)
+
+"""
+Resumo:
+- Loop duplo:
+    -> útil para entender a lógica
+    -> mais verboso, menos eficiente
+- Meshgrid:
+    -> cria matrizes 2D de coordenadas automaticamente
+    -> permite aplicar funções vetorizadas
+    -> mais prático e rápido em problemas de superfícies
+"""
