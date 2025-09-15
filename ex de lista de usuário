@@ -1,0 +1,5 @@
+num = input('digite lista de números separados por "";"" :')
+org = num.split(';')
+lista = [int(item.strip()) for item in org]
+media = sum(lista)/len(lista)
+print('a soma de valores é:', sum(lista), '\n','e a média é de: ', format(media, '.2f'))
