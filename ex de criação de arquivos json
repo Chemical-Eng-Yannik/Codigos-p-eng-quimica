@@ -1,0 +1,50 @@
+import json
+def st():
+  with open('tarefas.json', 'w') as casetarefas:
+    json.dump(tarefas, casetarefas)
+  print('Tarefas salvas!')
+
+def ct():
+  try:
+    with open('tarefas.json', 'r') as casetarefas:
+      tarefas = json.load(casetarefas)
+      print('tarefas carregadas!')
+      return tarefas 
+  except FileNotFoundError:
+    print('Arquivo de tarefas não encontrado.')
+    return []
+tarefas = ct()
+
+while True:
+  print('Menu de controle' '\n1. Para adicionar uma tarefa' '\n2. Listar as tarefas' '\n3. Remover uma tarefa' '\n4. Salvar tarefas' '\n5. Sair')
+  txt = input('Digite o número: ')
+  if txt == '1':
+    nome = input('Digite o nome da tarefa:')
+    prioridade = input('Prioridade:')
+    tarefa = {
+        'nome': nome,
+        'prioridade': prioridade
+    }
+    tarefas.append(tarefa)
+  elif txt == '2':
+    print('Imprimindo lista de tarefas:')
+    for tarefa in tarefas:
+      print(f"- {tarefa['nome']} (Prioridade {tarefa['prioridade']})")
+
+  elif txt == '3':
+    nome = input('Digite o nome da tarefa a ser removido')
+    for tarefa in tarefas:
+      if tarefa['nome'] == nome:
+        tarefas.remove(tarefa)
+        print('Tarefa removida: ', nome)
+        break
+      else:
+        print('Tarefa não encontrada')
+  elif txt == '4':
+    st()
+
+  elif txt == '5':
+    print('Encerrando o programa')
+    break
+  else:
+    print('Opção inválida')
