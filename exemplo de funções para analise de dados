@@ -1,0 +1,8 @@
+# Exemplo de filtragem de dados papa pegar uma condição contraria ~ 
+# 'dados' é o nome da variável que você atribuiu ao dataframe 
+dados = dados[~(dados["NomeColuna"] == "Texto/Condição")]
+
+# Verificando máximos mostrando a linha toda  
+dados[dados["NomeColuna"] == dados["NomeColuna"].astype(float).max()]
+# função de máximo também pode ser atribuida a uma variável para facilitar 
+
