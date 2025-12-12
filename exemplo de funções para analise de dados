@@ -6,3 +6,5 @@ dados = dados[~(dados["NomeColuna"] == "Texto/Condição")]
 dados[dados["NomeColuna"] == dados["NomeColuna"].astype(float).max()]
 # função de máximo também pode ser atribuida a uma variável para facilitar 
 
+# Média por agrupamento 
+dados.groupby("NomeColuna").agg({"NomeMédia" : ["mean"]}) # pode ser usado com qualquer função além do mean
